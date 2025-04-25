@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu carrito - Studio Crystal Arte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header-product {
+            background-color: #0b3b39;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .div_logo_actions_header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .div_h1 h1 {
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .div_h1 a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .div_actions_1_header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .btn_hablemos {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .btn_carrito {
+            background-color: #01c5c4;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn_ingresar {
+            background-color: #01c5c4;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .modal {
+            border: 1px solid #ddd;
+            background-color: white;
+            width: 80%;
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            padding: 20px;
+        }
+        
+        .cerrado {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .item-details {
+            flex-grow: 1;
+        }
+        
+        .item-details h3 {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .item-details p {
+            margin: 3px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .eliminar-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: auto;
+            align-self: center;
+        }
+        
+        .vaciar-btn {
+            background-color: #2e86de;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .carro-total {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .carro-total h2 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .carro-total table {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .carro-total td {
+            padding: 5px 0;
+        }
+        
+        .carro-total td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .finalizar-compra {
+            background-color: #2e86de;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .footer {
+            background-color: #0b3b39;
+            color: white;
+            padding: 20px;
+            margin-top: auto;
+        }
+        
+        .footer-columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .footer-columns div {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer h4 {
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-image {
+            text-align: center;
+        }
+        
+        .title-footer {
+            font-size: 3rem;
+            font-family: 'Script MT Bold', cursive;
+        }
+        
+        .derechos-reservados {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+        }
+        
+        .derechos-reservados2 {
+            display: flex;
+            align-items: center;
+        }
+        
+        .derechos-reservados2 i {
+            color: red;
+            margin: 0 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .div_logo_actions_header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .div_actions_1_header {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .footer-columns div {
+                flex: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-product">
+        <div class="div_logo_actions_header">
+            <div class="div_h1">
+                <a href="home.html"><h1>Studio Crystal Arte</h1></a>
+            </div>
+            <div class="div_actions_1_header">
+                <div>
+                    <a href="#" class="btn_hablemos">👤 Hablemos</a>
+                </div>
+                <div>
+                    <a href="carrito.html">
+                        <button class="btn_carrito">🛒 Tu carrito</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="formulario-login.html">
+                        <button class="btn_ingresar">👤 Ingresar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="carritoM" class="modal">
+            <div class="contenedor">
+                <span class="cerrado">×</span>
+                <h2>Tu carrito</h2>
+                <img src="/api/placeholder/30/30" alt="Ícono de entrega" style="margin-bottom: 15px;">
+                
+                <div class="cart-item">
+                    <img src="/api/placeholder/80/80" alt="Boku no Hero">
+                    <div class="item-details">
+                        <h3>Boku no Hero</h3>
+                        <p>Sin descripción</p>
+                        <p>Precio: $15.00</p>
+                        <p>Cantidad: 1</p>
+                    </div>
+                    <button class="eliminar-btn">Eliminar</button>
+                </div>
+                
+                <div class="cart-item">
+                    <img src="/api/placeholder/80/80" alt="Detective">
+                    <div class="item-details">
+                        <h3>Detective</h3>
+                        <p>Sin descripción</p>
+                        <p>Precio: $11.00</p>
+                        <p>Cantidad: 1</p>
+                    </div>
+                    <button class="eliminar-btn">Eliminar</button>
+                </div>
+                
+                <div class="cart-item">
+                    <img src="/api/placeholder/80/80" alt="Soro Roronoha">
+                    <div class="item-details">
+                        <h3>Soro Roronoha</h3>
+                        <p>Sin descripción</p>
+                        <p>Precio: $10.00</p>
+                        <p>Cantidad: 1</p>
+                    </div>
+                    <button class="eliminar-btn">Eliminar</button>
+                </div>
+                
+                <button class="vaciar-btn">Vaciar Carrito</button>
+            </div>
+        </div>
+        
+        <section class="carro-total">
+            <h2>Carro Total:</h2>
+            <table>
+                <tr>
+                    <td>Total</td>
+                    <td id="total">$36.00</td>
+                </tr>
+            </table>
+            <button class="finalizar-compra">Finalizar compra</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-columns">
+            <div>
+                <h4>SÍGUENOS</h4>
+                <a href="https://www.facebook.com/studiocrystalartehechoamano" target="_blank"><p><i class="fa-brands fa-facebook"></i> Facebook</p></a>
+                <a href="https://www.instagram.com/studio_crystal.arte/?hl=es" target="_blank"><p><i class="fa-brands fa-instagram"></i> Instagram Cuadros</p></a>
+                <a href="https://www.tiktok.com/@studio_crystal.arte" target="_blank"><p><i class="fa-brands fa-tiktok"></i> TikTok</p></a>
+            </div>
+            <div class="footer-image">
+                <h2 class="title-footer">SCA</h2>
+            </div>
+        </div>
+        <div class="derechos-reservados">
+            <div class="derechos-reservados1">
+                <p>© Todos los derechos reservados 2024</p>
+            </div>
+            <div class="derechos-reservados2">
+                <p>Hecho con</p>
+                <i>❤️</i>
+                <p>por DM</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple cart functionality
+        document.querySelectorAll('.eliminar-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.cart-item').remove();
+                updateTotal();
+            });
+        });
+        
+        document.querySelector('.vaciar-btn').addEventListener('click', function() {
+            document.querySelectorAll('.cart-item').forEach(item => item.remove());
+            updateTotal();
+        });
+        
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll('.item-details').forEach(item => {
+                const priceText = item.querySelector('p:nth-child(3)').textContent;
+                const price = parseFloat(priceText.replace('Precio: $', ''));
+                total += price;
+            });
+            document.getElementById('total').textContent = '$' + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
