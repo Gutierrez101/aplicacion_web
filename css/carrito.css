@@ -261,3 +261,30 @@ main {
         flex: 100%;
     }
 }
+#usuarioLogueado {
+    display: flex; /* Usar flexbox para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10px; /* Espaciado entre el texto y el botón */
+    margin: 10px auto; /* Centrar el contenedor en el eje horizontal */
+    padding: 10px; /* Espaciado interno */
+    background-color: #002527; /* Fondo claro para destacar */
+    border: 1px solid #ccc; /* Borde opcional */
+    border-radius: 5px; /* Bordes redondeados */
+    width: fit-content; /* Ajustar el ancho al contenido */
+  }
+  
+  #btnCerrarSesion {
+    background-color: #01c5c4; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin bordes */
+    padding: 8px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    transition: background-color 0.3s ease; /* Transición suave */
+  }
+  
+  #btnCerrarSesion:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+  }
