@@ -2,7 +2,7 @@
 // filepath: php/create_user.php
 
 // Conexión a la base de datos
-$servername = "localhost";
+$servername = "localhost:8080";
 $username = "root";
 $password = "";
 $dbname = "study_crystal_db";

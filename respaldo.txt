@@ -20,3 +20,5 @@
             });
             document.getElementById('total').textContent = '$' + total.toFixed(2);
         }
+
+        ../index.html

@@ -23,9 +23,13 @@
                 </div>
                 <div>
                     <a href="formulario-login.html">
-                        <button class="btn_ingresar">👤 Ingresar</button>
+                        <button class="btn_ingresar" id="btnIngresar">👤 Ingresar</button>
                     </a>
                 </div>
+                <div id="usuarioLogueado" style="display: none;">
+                    <button id="btnCerrarSesion">Cerrar sesión</button>
+                </div>
+
             </div>
         </div>
     </header>
@@ -36,10 +40,10 @@
             <h2 class="title-start2">Bienvenidos a la Tienda StudioCrystalArte</h2>
         </div>
 
-        <div class="products">          
+        <div class="products-container">          
             <div>
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Anime">
+                    <img src="img/img1.jpg" alt="Producto Anime">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -48,7 +52,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Tecnología">
+                    <img src="img/img2.jpg" alt="Producto Tecnología">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -57,7 +61,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Anime">
+                    <img src="img/img3.jpg" alt="Producto Anime">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -66,45 +70,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Tecnología">
-                    <div class="product-content">
-                        <h4 class="title-product">PRODUCT<br>NAME</h4>
-                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
-                        <button>🛒 Añadir al carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Anime">
-                    <div class="product-content">
-                        <h4 class="title-product">PRODUCT<br>NAME</h4>
-                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
-                        <button>🛒 Añadir al carrito</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Tecnología">
-                    <div class="product-content">
-                        <h4 class="title-product">PRODUCT<br>NAME</h4>
-                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
-                        <button>🛒 Añadir al carrito</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Anime">
-                    <div class="product-content">
-                        <h4 class="title-product">PRODUCT<br>NAME</h4>
-                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
-                        <button>🛒 Añadir al carrito</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Tecnología">
+                    <img src="img/img4.jpg" alt="Producto Tecnología">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -115,7 +81,7 @@
 
             <div>
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Anime">
+                    <img src="img/img6.jpg" alt="Producto Anime">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -124,7 +90,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Tecnología">
+                    <img src="img/img7.jpg" alt="Producto Tecnología">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -133,7 +99,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Anime">
+                    <img src="img/img8.jpg" alt="Producto Anime">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
@@ -142,7 +108,45 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="/api/placeholder/280/200" alt="Producto Tecnología">
+                    <img src="img/img9.jpg" alt="Producto Tecnología">
+                    <div class="product-content">
+                        <h4 class="title-product">PRODUCT<br>NAME</h4>
+                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
+                        <button>🛒 Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="product-card">
+                    <img src="img/img1.jpg" alt="Producto Anime">
+                    <div class="product-content">
+                        <h4 class="title-product">PRODUCT<br>NAME</h4>
+                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
+                        <button>🛒 Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="img/img2.jpg" alt="Producto Tecnología">
+                    <div class="product-content">
+                        <h4 class="title-product">PRODUCT<br>NAME</h4>
+                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
+                        <button>🛒 Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="img/img3.jpg" alt="Producto Anime">
+                    <div class="product-content">
+                        <h4 class="title-product">PRODUCT<br>NAME</h4>
+                        <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
+                        <button>🛒 Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="img/img4.jpg" alt="Producto Tecnología">
                     <div class="product-content">
                         <h4 class="title-product">PRODUCT<br>NAME</h4>
                         <p class="precio-product-word">PRECIO</p><p class="precio-product">$100.00</p>
