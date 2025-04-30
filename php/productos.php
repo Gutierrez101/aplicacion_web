@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 header('Content-Type: application/json');
 
 // Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "study_crystal_db");
+$conn = new mysqli("localhost:8080", "root", "", "study_crystal_db");
 
 // Verificar conexión
 if ($conn->connect_error) {

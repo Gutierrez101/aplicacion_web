@@ -37,44 +37,8 @@
     <main>
         <div id="carritoM" class="modal">
             <div class="contenedor">
-                <span class="cerrado">×</span>
                 <h2>Tu carrito</h2>
-                <img src="/api/placeholder/30/30" alt="Ícono de entrega" style="margin-bottom: 15px;">
-                
-                <div class="cart-item">
-                    <img src="/api/placeholder/80/80" alt="Boku no Hero">
-                    <div class="item-details">
-                        <h3>Boku no Hero</h3>
-                        <p>Sin descripción</p>
-                        <p>Precio: $15.00</p>
-                        <p>Cantidad: 1</p>
-                    </div>
-                    <button class="eliminar-btn">Eliminar</button>
-                </div>
-                
-                <div class="cart-item">
-                    <img src="/api/placeholder/80/80" alt="Detective">
-                    <div class="item-details">
-                        <h3>Detective</h3>
-                        <p>Sin descripción</p>
-                        <p>Precio: $11.00</p>
-                        <p>Cantidad: 1</p>
-                    </div>
-                    <button class="eliminar-btn">Eliminar</button>
-                </div>
-                
-                <div class="cart-item">
-                    <img src="/api/placeholder/80/80" alt="Soro Roronoha">
-                    <div class="item-details">
-                        <h3>Soro Roronoha</h3>
-                        <p>Sin descripción</p>
-                        <p>Precio: $10.00</p>
-                        <p>Cantidad: 1</p>
-                    </div>
-                    <button class="eliminar-btn">Eliminar</button>
-                </div>
-                
-                <button class="vaciar-btn">Vaciar Carrito</button>
+                <!-- Los productos se cargarán dinámicamente aquí -->
             </div>
         </div>
         
@@ -83,9 +47,10 @@
             <table>
                 <tr>
                     <td>Total</td>
-                    <td id="total">$36.00</td>
+                    <td id="total">$0.00</td>
                 </tr>
             </table>
+            <button class="vaciar-btn">Vaciar carrito</button>
             <button class="finalizar-compra">Finalizar compra</button>
         </section>
     </main>
@@ -114,6 +79,6 @@
         </div>
     </footer>
 
-    <script type="module" src="js/cart.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
