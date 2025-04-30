@@ -1,5 +1,7 @@
-<!--Logica de productos-->
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 header('Content-Type: application/json');
 
 // Conexión a la base de datos
@@ -15,10 +17,18 @@ if ($conn->connect_error) {
 $sql = "SELECT nombre, precio, imagen, stock FROM productos";
 $result = $conn->query($sql);
 
-$productos = [];
+if (!$result) {
+    echo json_encode(["error" => "Error en la consulta: " . $conn->error]);
+    exit();
+}
 
+$productos = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        // Si las rutas de las imágenes son absolutas, conviértelas en relativas
+        if (strpos($row['imagen'], "C:\\xampp\\htdocs\\aplicacion_web\\") !== false) {
+            $row['imagen'] = str_replace("C:\\xampp\\htdocs\\aplicacion_web\\", "", $row['imagen']);
+        }
         $productos[] = $row;
     }
 }

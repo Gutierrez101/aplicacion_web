@@ -3,25 +3,66 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnIngresar = document.getElementById("btnIngresar");
     const usuarioLogueadoDiv = document.getElementById("usuarioLogueado");
     const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+    const productsContainer = document.querySelector(".products-container");
 
+    // Mostrar el usuario logueado
     if (usuarioLogueado) {
-        // Si hay un usuario logueado, mostrar su nombre y ocultar el botón "Ingresar"
         if (btnIngresar) btnIngresar.style.display = "none";
         if (usuarioLogueadoDiv) {
             usuarioLogueadoDiv.style.display = "block";
             usuarioLogueadoDiv.innerHTML = `<p>👤 Bienvenido, ${usuarioLogueado}</p>`;
-            usuarioLogueadoDiv.appendChild(btnCerrarSesion); // Asegurarse de que el botón esté dentro del contenedor
+            usuarioLogueadoDiv.appendChild(btnCerrarSesion);
         }
     }
 
-    // Agregar evento para cerrar sesión
+    // Cerrar sesión
     if (btnCerrarSesion) {
         btnCerrarSesion.addEventListener("click", function () {
-            // Eliminar el usuario logueado de LocalStorage
             localStorage.removeItem("usuarioLogueado");
-
-            // Recargar la página para actualizar la interfaz
             window.location.reload();
         });
     }
+
+    // Cargar productos desde productos.php
+    fetch("php/productos.php")
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Error en la respuesta del servidor");
+        }
+        return response.json();
+    })
+    .then((data) => {
+        if (data.error) {
+            productsContainer.innerHTML = `<p>Error: ${data.error}</p>`;
+            return;
+        }
+
+        let html = "";
+        data.forEach((producto) => {
+            html += `
+                <div class="product-card">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="product-content">
+                        <h4 class="title-product">${producto.nombre}</h4>
+                        <p class="precio-product-word">PRECIO</p>
+                        <p class="precio-product">$${parseFloat(producto.precio).toFixed(2)}</p>
+                        <button onclick='agregarAlCarrito(${JSON.stringify(producto)})'>🛒 Añadir al carrito</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        productsContainer.innerHTML = html;
+    })
+    .catch((error) => {
+        console.error("Error al cargar los productos:", error);
+        productsContainer.innerHTML = `<p>Error al cargar los productos: ${error.message}</p>`;
+    });
 });
+// Función para agregar productos al carrito
+function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push(producto);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert("Producto añadido al carrito");
+}
