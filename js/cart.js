@@ -2,10 +2,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const usuarioLogueado = localStorage.getItem("usuarioLogueado");
     const carritoContainer = document.querySelector(".contenedor");
     const totalElement = document.getElementById("total");
+    const usuarioLogueadoDiv = document.getElementById("usuarioLogueado");
+    const usuarioNombre = document.getElementById("usuarioNombre");
+    const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+    const btnIngresar = document.getElementById("btnIngresar");
 
-    if (!usuarioLogueado) {
-        alert("Debes iniciar sesión para ver tu carrito.");
-        return;
+    // Controlar la visibilidad de los botones
+    if (usuarioLogueado) {
+        usuarioLogueadoDiv.style.display = "block";
+        usuarioNombre.textContent = `👤 Bienvenido, ${usuarioLogueado}`;
+        if (btnIngresar) btnIngresar.style.display = "none";
+    } else {
+        usuarioLogueadoDiv.style.display = "none";
+        if (btnIngresar) btnIngresar.style.display = "block";
+    }
+
+    // Cerrar sesión
+    if (btnCerrarSesion) {
+        btnCerrarSesion.addEventListener("click", function () {
+            if (usuarioLogueado) {
+                // Eliminar el carrito del usuario actual
+                localStorage.removeItem(`carrito_${usuarioLogueado}`);
+            }
+            // Eliminar el usuario logueado y redirigir al inicio
+            localStorage.removeItem("usuarioLogueado");
+            window.location.href = "index.html";
+        });
     }
 
     // Cargar productos del carrito
@@ -28,6 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para cargar el carrito
     function cargarCarrito() {
+        if (!usuarioLogueado) {
+            carritoContainer.innerHTML = "<p>Debes iniciar sesión para ver tu carrito.</p>";
+            totalElement.textContent = "$0.00";
+            return;
+        }
+
         const carrito = JSON.parse(localStorage.getItem(`carrito_${usuarioLogueado}`)) || [];
         carritoContainer.innerHTML = ""; // Limpiar el contenedor
         let total = 0;
@@ -60,8 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para eliminar un producto del carrito
     window.eliminarDelCarrito = function (index) {
-        const usuarioLogueado = localStorage.getItem("usuarioLogueado");
-        let carrito = JSON.parse(localStorage.getItem(`carrito_${usuarioLogueado}`)) || [];
+        const carrito = JSON.parse(localStorage.getItem(`carrito_${usuarioLogueado}`)) || [];
         carrito.splice(index, 1);
         localStorage.setItem(`carrito_${usuarioLogueado}`, JSON.stringify(carrito));
         cargarCarrito();

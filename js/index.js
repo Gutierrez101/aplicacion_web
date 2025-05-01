@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let html = "";
             data.forEach((producto) => {
                 html += `
+                <div>
                     <div class="product-card">
                         <img src="${producto.imagen}" alt="${producto.nombre}">
                         <div class="product-content">
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </button>
                         </div>
                     </div>
+                </div>
                 `;
             });
 
