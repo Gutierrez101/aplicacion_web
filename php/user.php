@@ -1,5 +1,5 @@
 <?php
-// filepath: php/create_user.php
+
 
 // Conexión a la base de datos
 $servername = "localhost:8080";

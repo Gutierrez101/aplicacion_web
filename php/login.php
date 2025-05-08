@@ -1,5 +1,5 @@
 <?php
-// filepath: c:\xampp\htdocs\aplicacion_web\php\login.php
+
 
 // Conexión a la base de datos
 $servername = "localhost:8080";
